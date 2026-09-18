@@ -71,18 +71,16 @@
 
     .hero {
       position: relative;
-      min-height: 760px;
-      padding: 175px 0 95px;
+      min-height: 650px;
+      padding: 170px 0 86px;
       color: white;
       background:
-        linear-gradient(90deg, rgba(16,42,71,.94) 0%, rgba(16,42,71,.82) 44%, rgba(16,42,71,.42) 70%, rgba(16,42,71,.18) 100%),
+        linear-gradient(90deg, rgba(16,42,71,.94) 0%, rgba(16,42,71,.88) 34%, rgba(16,42,71,.56) 56%, rgba(16,42,71,.12) 82%, rgba(16,42,71,0) 100%),
         url("images/hero.webp") center center / cover no-repeat;
     }
     .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0,1.05fr) minmax(280px,.6fr);
-      gap: 72px;
-      align-items: end;
+      display: block;
+      max-width: 720px;
     }
     .kicker {
       margin: 0 0 20px;
@@ -113,15 +111,12 @@
     .button:hover { transform: translateY(-2px); background: var(--red-dark); }
     .button.alt { border-color: rgba(255,255,255,.52); background: rgba(255,255,255,.06); }
     .button.alt:hover { background: rgba(255,255,255,.14); }
-    .hero-card {
-      padding: 22px;
-      background: rgba(255,255,255,.94);
-      color: var(--ink);
-      box-shadow: var(--shadow);
+    .hero-social {
+      margin: 20px 0 0;
+      color: rgba(255,255,255,.78);
+      font-size: .91rem;
     }
-    .hero-card img { width: 100%; border-radius: 2px; }
-    .hero-card p { margin: 17px 2px 0; color: var(--muted); font-size: .9rem; }
-    .hero-card a { color: var(--navy); font-weight: 850; }
+    .hero-social a { color: white; font-weight: 850; text-decoration-thickness: 1px; }
 
     section { padding: 96px 0; }
     .label { margin-bottom: 13px; color: var(--red); font-size: .76rem; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; }
@@ -241,9 +236,8 @@
 
     @media (max-width: 880px) {
       .nav-links a:not(.nav-cta):not(.nav-facebook) { display: none; }
-      .hero-grid, .intro-grid, .social-grid, .membership-grid, .faq-grid, .contact-grid { grid-template-columns: 1fr; gap: 46px; }
+      .intro-grid, .social-grid, .membership-grid, .faq-grid, .contact-grid { grid-template-columns: 1fr; gap: 46px; }
       .hero { min-height: auto; padding-top: 145px; }
-      .hero-card { max-width: 430px; }
       .section-head { display: block; }
       .section-head p { margin-top: 20px; }
       .fleet-grid, .steps { grid-template-columns: 1fr 1fr; }
@@ -255,7 +249,7 @@
       .brand-logo { width: 142px; height: 50px; }
       .nav-facebook { display: none; }
       .nav-cta { padding: 7px 10px; font-size: .8rem !important; }
-      .hero { padding: 125px 0 68px; background-position: 62% center; }
+      .hero { padding: 125px 0 68px; background-position: 60% center; }
       h1 { font-size: clamp(2.8rem,15vw,4.1rem); }
       section { padding: 70px 0; }
       .fleet-grid, .steps { grid-template-columns: 1fr; }
@@ -291,19 +285,14 @@
   <main id="main">
     <section class="hero" id="top">
       <div class="wrap hero-grid">
-        <div>
-          <p class="kicker">Member-operated flying club · IL48 Shafer Field</p>
-          <h1>More access. More flying. Shared ownership.</h1>
-          <p class="hero-copy">Open Hangar Collective is a nonprofit, non-equity flying club serving the St. Louis Metro East. Members share access to three club aircraft and a community built around safe, affordable general aviation.</p>
-          <div class="actions">
-            <a class="button" href="https://join.openhangar.club">Start an application</a>
-            <a class="button alt" href="#fleet">Meet the fleet</a>
-          </div>
+        <p class="kicker">Member-operated flying club · IL48 Shafer Field</p>
+        <h1>More access. More flying. Shared ownership.</h1>
+        <p class="hero-copy">Open Hangar Collective is a nonprofit, non-equity flying club serving the St. Louis Metro East. Members share access to three club aircraft and a community built around safe, affordable general aviation.</p>
+        <div class="actions">
+          <a class="button" href="https://join.openhangar.club">Start an application</a>
+          <a class="button alt" href="#fleet">Meet the fleet</a>
         </div>
-        <aside class="hero-card">
-          <img src="images/logo.webp" alt="Open Hangar Collective logo">
-          <p>For current aircraft updates, work days, gatherings, and announcements, follow the club on <a href="https://www.facebook.com/profile.php?id=61575660054627" rel="noopener">Facebook</a>.</p>
-        </aside>
+        <p class="hero-social">For current club activity and announcements, follow us on <a href="https://www.facebook.com/profile.php?id=61575660054627" rel="noopener">Facebook</a>.</p>
       </div>
     </section>
 
