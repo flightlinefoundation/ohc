@@ -50,22 +50,28 @@ section{padding:78px 0}
 .feature{padding:24px;background:white;border:1px solid var(--line);box-shadow:0 7px 22px rgba(23,59,99,.06)}
 .feature h3{margin:0 0 8px;color:var(--navy)}.feature p{margin:0;color:var(--muted)}
 .feature .eyebrow{font-size:.75rem;color:var(--red);font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
-.aircraft-list{display:grid;gap:28px;margin-top:34px}
-.aircraft-panel{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(330px,.95fr);overflow:hidden;background:white;border:1px solid rgba(255,255,255,.12);box-shadow:var(--shadow)}
-.aircraft-panel:nth-child(even){background:var(--navy-dark);color:white}
+.aircraft-page-hero{padding:62px 0 52px;background:linear-gradient(135deg,var(--navy-dark),var(--navy));color:white}
+.aircraft-page-hero h1{max-width:820px;font-size:clamp(2.6rem,5vw,4.5rem)}
+.aircraft-page-hero p{max-width:720px;margin:18px 0 0;color:rgba(255,255,255,.78);font-size:1.06rem}
+.aircraft-list{display:grid;gap:30px;margin-top:34px}
+.aircraft-panel{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(330px,.95fr);overflow:hidden;background:white;border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow)}
 .aircraft-panel img{width:100%;height:100%;min-height:340px;object-fit:cover}
-.aircraft-content{padding:30px}
+.aircraft-content{padding:32px}
 .aircraft-content h2{font-size:clamp(2rem,3.5vw,3rem)}
-.aircraft-panel:nth-child(even) h2,.aircraft-panel:nth-child(even) h3{color:white}
-.aircraft-panel:nth-child(even) .info-list li{color:rgba(255,255,255,.74)}
 .aircraft-content h3{margin:10px 0;color:var(--navy)}
+.aircraft-panel.accent{background:var(--navy-dark);color:white;border-color:rgba(255,255,255,.08)}
+.aircraft-panel.accent h2,.aircraft-panel.accent h3{color:white}
+.aircraft-panel.accent .info-list li{color:rgba(255,255,255,.76)}
 .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
 .tag{padding:5px 9px;border-radius:999px;background:#edf3f8;color:var(--navy);font-size:.78rem;font-weight:780}
-.aircraft-panel:nth-child(even) .tag{background:rgba(255,255,255,.12);color:white}
+.aircraft-panel.accent .tag{background:rgba(255,255,255,.12);color:white}
 .info-list{display:grid;gap:10px;margin:20px 0 0;padding:0;list-style:none}
 .info-list li{padding-left:18px;position:relative;color:var(--muted)}
 .info-list li::before{content:"";position:absolute;left:0;top:.7em;width:7px;height:7px;border-radius:50%;background:var(--red)}
-.photo-note{margin-top:28px;padding:18px 20px;border-left:4px solid var(--red);background:white;color:var(--muted)}
+.aircraft-cta{margin-top:34px;padding:28px;border-radius:8px;background:var(--navy);color:white;display:flex;justify-content:space-between;gap:28px;align-items:center}
+.aircraft-cta h2{color:white;font-size:clamp(1.8rem,3vw,2.5rem)}
+.aircraft-cta p{margin:8px 0 0;color:rgba(255,255,255,.75)}
+.aircraft-cta .actions{flex:0 0 auto}
 .community-banner{display:grid;grid-template-columns:1.05fr .95fr;gap:0;background:var(--navy);color:white;overflow:hidden;box-shadow:var(--shadow)}
 .community-banner img{width:100%;height:100%;min-height:340px;object-fit:cover}
 .community-copy{padding:34px}.community-copy h2{color:white}.community-copy p{color:rgba(255,255,255,.76)}
@@ -101,8 +107,14 @@ footer{padding:28px 0;background:#0b2037;color:rgba(255,255,255,.62);font-size:.
   :root{--rail:0px}.page-shell{padding-left:0;padding-bottom:66px}.side-nav{display:none}.bottom-nav{display:grid}
   .hero{min-height:760px;padding:100px 0 320px;background-image:linear-gradient(180deg,rgba(16,42,71,1) 0%,rgba(16,42,71,.98) 45%,rgba(16,42,71,.78) 58%,rgba(16,42,71,.2) 75%,rgba(16,42,71,0) 100%),url("images/hero.webp");background-position:center top,center bottom;background-size:100% 100%,100% auto}
   .grid-2,.aircraft-panel,.community-banner{grid-template-columns:1fr}.feature-grid,.steps,.social-cards{grid-template-columns:1fr}
-  .aircraft-panel:nth-child(even) .aircraft-content{order:2}
-  .aircraft-panel:nth-child(even) img{order:1}
+  .aircraft-panel img{order:1;min-height:0;aspect-ratio:4/3}
+  .aircraft-panel .aircraft-content{order:2}
+  .aircraft-panel.accent{background:white;color:var(--ink)}
+  .aircraft-panel.accent h2,.aircraft-panel.accent h3{color:var(--navy)}
+  .aircraft-panel.accent .info-list li{color:var(--muted)}
+  .aircraft-panel.accent .tag{background:#edf3f8;color:var(--navy)}
+  .aircraft-cta{display:block}
+  .aircraft-cta .actions{margin-top:18px}
   .footer-inner{display:block}.footer-inner div+div{margin-top:7px}
 }
 @media(max-width:560px){
