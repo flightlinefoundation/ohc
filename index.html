@@ -1,488 +1,70 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Open Hangar Collective is a nonprofit, member-operated flying club at IL48 Shafer Field in St. Jacob, Illinois, serving the St. Louis Metro East.">
-  <meta name="theme-color" content="#173B63">
-  <title>Open Hangar Collective | Flying Club at IL48</title>
-  <style>
-    :root {
-      --navy: #173b63;
-      --navy-dark: #102a47;
-      --red: #e3262e;
-      --red-dark: #bb1720;
-      --paper: #eef2f6;
-      --white: #ffffff;
-      --ink: #2f3b48;
-      --muted: #677381;
-      --line: #d5dde5;
-      --shadow: 0 20px 48px rgba(23,59,99,.14);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background: var(--paper);
-      font: 16px/1.65 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-    a { color: inherit; }
-    img { display: block; max-width: 100%; }
-    .wrap { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
-    .skip { position: absolute; left: -9999px; top: 10px; z-index: 100; padding: 10px 14px; background: var(--red); color: white; }
-    .skip:focus { left: 10px; }
-
-    header {
-      position: absolute;
-      z-index: 20;
-      width: 100%;
-      color: var(--white);
-      background: linear-gradient(to bottom, rgba(16,42,71,.72), transparent);
-    }
-    .nav {
-      min-height: 86px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(255,255,255,.18);
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      color: white;
-      text-decoration: none;
-      font-weight: 850;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-    }
-    .brand-logo { width: 170px; height: 58px; object-fit: contain; object-position: left center; }
-    .nav-links { display: flex; align-items: center; gap: 24px; }
-    .nav-links a { color: rgba(255,255,255,.88); text-decoration: none; font-size: .92rem; font-weight: 750; }
-    .nav-links a:hover, .nav-links a:focus-visible { color: white; }
-    .nav-facebook { color: white !important; display: inline-flex; align-items: center; gap: 6px; }
-    .fb-icon { width: 17px; height: 17px; flex: 0 0 auto; fill: currentColor; vertical-align: -3px; }
-    .nav-cta {
-      padding: 9px 15px;
-      border: 1px solid rgba(255,255,255,.42);
-      border-radius: 999px;
-    }
-
-    .hero {
-      position: relative;
-      min-height: 650px;
-      padding: 170px 0 86px;
-      color: white;
-      background-color: var(--navy-dark);
-      background-image:
-        linear-gradient(90deg, rgba(16,42,71,1) 0%, rgba(16,42,71,.99) 34%, rgba(16,42,71,.88) 47%, rgba(16,42,71,.30) 63%, rgba(16,42,71,0) 76%),
-        url("images/hero.webp");
-      background-repeat: no-repeat;
-      background-position: right center, right center;
-      background-size: 100% 100%, auto 100%;
-    }
-    .hero-grid {
-      display: block;
-      max-width: 720px;
-    }
-    .kicker {
-      margin: 0 0 20px;
-      color: #ff6d73;
-      font-size: .78rem;
-      font-weight: 900;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-    h1, h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; letter-spacing: -.04em; }
-    h1 { max-width: 720px; margin: 0; font-size: clamp(3.2rem, 7vw, 6.2rem); line-height: .97; }
-    .hero-copy { max-width: 680px; margin: 28px 0 34px; color: rgba(255,255,255,.84); font-size: 1.14rem; }
-    .actions { display: flex; flex-wrap: wrap; gap: 13px; }
-    .button {
-      display: inline-flex;
-      min-height: 50px;
-      align-items: center;
-      justify-content: center;
-      padding: 0 20px;
-      border: 1px solid transparent;
-      border-radius: 4px;
-      background: var(--red);
-      color: white;
-      text-decoration: none;
-      font-weight: 850;
-      transition: transform .2s ease, background .2s ease;
-    }
-    .button .fb-icon, .contact-buttons .fb-icon { margin-right: 7px; }
-    .button:hover { transform: translateY(-2px); background: var(--red-dark); }
-    .button.alt { border-color: rgba(255,255,255,.52); background: rgba(255,255,255,.06); }
-    .button.alt:hover { background: rgba(255,255,255,.14); }
-    .hero-social {
-      margin: 20px 0 0;
-      color: rgba(255,255,255,.78);
-      font-size: .91rem;
-    }
-    .hero-social a { color: white; font-weight: 850; text-decoration-thickness: 1px; }
-
-    section { padding: 96px 0; }
-    .label { margin-bottom: 13px; color: var(--red); font-size: .76rem; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; }
-    h2 { max-width: 760px; margin: 0; color: var(--navy); font-size: clamp(2.25rem, 4.6vw, 3.8rem); line-height: 1.08; }
-    .intro-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; align-items: start; }
-    .large-copy { margin: 2px 0 20px; color: var(--ink); font-size: 1.24rem; }
-    .body-copy { color: var(--muted); }
-    .body-copy p { margin: 0 0 18px; }
-
-    .fleet { background: white; }
-    .section-head { display: flex; justify-content: space-between; gap: 48px; align-items: end; margin-bottom: 46px; }
-    .section-head p { max-width: 430px; margin: 0; color: var(--muted); }
-    .fleet-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-    .aircraft {
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: white;
-      box-shadow: 0 8px 25px rgba(23,59,99,.07);
-    }
-    .aircraft-photo { position: relative; aspect-ratio: 4/3; overflow: hidden; background: #dfe6ec; }
-    .aircraft-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
-    .aircraft:hover .aircraft-photo img { transform: scale(1.025); }
-    .aircraft-photo::after {
-      content: attr(data-tail);
-      position: absolute;
-      right: 14px;
-      bottom: 12px;
-      padding: 4px 9px;
-      background: rgba(16,42,71,.9);
-      color: white;
-      font-size: .75rem;
-      font-weight: 900;
-      letter-spacing: .08em;
-    }
-    .aircraft-body { padding: 26px; }
-    .aircraft h3 { margin: 0 0 4px; color: var(--navy); font-size: 1.22rem; }
-    .aircraft-model { margin: 0 0 20px; color: var(--muted); font-size: .92rem; }
-    .rate { display: flex; justify-content: space-between; align-items: baseline; padding-top: 16px; border-top: 1px solid var(--line); }
-    .rate strong { color: var(--red); font-family: Georgia, serif; font-size: 1.6rem; font-weight: 500; }
-    .rate span { color: var(--muted); font-size: .82rem; font-weight: 700; }
-
-    .social {
-      background: var(--navy);
-      color: white;
-    }
-    .social-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 70px;
-      align-items: center;
-    }
-    .social .label { color: #ff747a; }
-    .social h2 { color: white; }
-    .social p { color: rgba(255,255,255,.72); }
-    .social-image {
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.16);
-      box-shadow: var(--shadow);
-    }
-    .social-image img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
-
-    .membership { background: #f8fafc; }
-    .membership-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 80px; align-items: start; }
-    .price-panel { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); background: white; }
-    .price { padding: 24px; }
-    .price + .price { border-left: 1px solid var(--line); }
-    .price small { display: block; color: var(--muted); font-weight: 750; text-transform: uppercase; letter-spacing: .1em; }
-    .price strong { display: block; margin-top: 6px; color: var(--navy); font-family: Georgia, serif; font-size: 2rem; font-weight: 500; }
-    .included { display: grid; gap: 2px; }
-    .included-item { display: grid; grid-template-columns: 42px 1fr; gap: 15px; padding: 20px 0; border-bottom: 1px solid var(--line); }
-    .included-item:first-child { border-top: 1px solid var(--line); }
-    .check { color: var(--red); font-size: 1.3rem; font-weight: 900; }
-    .included-item h3 { margin: 0 0 4px; color: var(--navy); font-size: 1rem; }
-    .included-item p { margin: 0; color: var(--muted); font-size: .92rem; }
-
-    .join-flow { background: #e9eef3; }
-    .steps { margin-top: 46px; display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid #cbd5dd; border-left: 1px solid #cbd5dd; }
-    .step { min-height: 228px; padding: 28px; border-right: 1px solid #cbd5dd; border-bottom: 1px solid #cbd5dd; background: rgba(255,255,255,.62); }
-    .step-number { color: var(--red); font-family: Georgia, serif; font-size: 1rem; font-style: italic; }
-    .step h3 { margin: 35px 0 9px; color: var(--navy); font-size: 1.08rem; }
-    .step p { margin: 0; color: var(--muted); font-size: .92rem; }
-    .join-action { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
-    .join-action p { margin: 0; color: var(--muted); font-size: .9rem; }
-
-    .faq-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 84px; }
-    .faq-list { border-top: 1px solid var(--line); }
-    details { border-bottom: 1px solid var(--line); }
-    summary { position: relative; padding: 22px 42px 22px 0; color: var(--navy); font-weight: 850; cursor: pointer; list-style: none; }
-    summary::-webkit-details-marker { display: none; }
-    summary::after { content: "+"; position: absolute; right: 5px; top: 18px; color: var(--red); font: 400 1.55rem Georgia, serif; }
-    details[open] summary::after { content: "−"; }
-    details p { max-width: 680px; margin: -5px 0 23px; color: var(--muted); }
-
-    .contact { padding: 82px 0; background: var(--red); color: white; }
-    .contact-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 70px; align-items: center; }
-    .contact .label { color: white; opacity: .76; }
-    .contact h2 { color: white; font-size: clamp(2.2rem,4vw,3.35rem); }
-    .contact-card { padding: 28px 30px; background: var(--navy-dark); color: white; box-shadow: 12px 12px 0 rgba(16,42,71,.22); }
-    .contact-card small { display: block; margin-bottom: 8px; color: #b8d2ea; font-weight: 850; letter-spacing: .11em; text-transform: uppercase; }
-    .contact-card a { color: white; font-weight: 850; text-decoration: none; overflow-wrap: anywhere; }
-    .contact-card a:hover { text-decoration: underline; }
-    .contact-card p { margin: 16px 0 0; color: rgba(255,255,255,.72); font-size: .92rem; }
-    .contact-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-    .contact-buttons a {
-      display: inline-flex;
-      min-height: 44px;
-      align-items: center;
-      padding: 0 15px;
-      border: 1px solid rgba(255,255,255,.32);
-      border-radius: 3px;
-    }
-
-    footer { padding: 31px 0; background: #0b2037; color: rgba(255,255,255,.64); font-size: .85rem; }
-    .footer-inner { display: flex; justify-content: space-between; gap: 24px; }
-    .footer-links { display: flex; gap: 18px; }
-    .footer-links a { color: rgba(255,255,255,.8); text-decoration: none; }
-
-    @media (max-width: 880px) {
-      .nav-links a:not(.nav-cta):not(.nav-facebook) { display: none; }
-      .intro-grid, .social-grid, .membership-grid, .faq-grid, .contact-grid { grid-template-columns: 1fr; gap: 46px; }
-      .hero { min-height: auto; padding-top: 145px; }
-      .section-head { display: block; }
-      .section-head p { margin-top: 20px; }
-      .fleet-grid, .steps { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 590px) {
-      .wrap { width: min(100% - 28px,1160px); }
-      .nav { min-height: 72px; }
-      .brand { font-size: .78rem; }
-      .brand-logo { width: 142px; height: 50px; }
-      .nav-facebook { display: none; }
-      .nav-cta { padding: 7px 10px; font-size: .8rem !important; }
-      .hero {
-        min-height: 760px;
-        padding: 120px 0 330px;
-        background-color: var(--navy-dark);
-        background-image:
-          linear-gradient(
-            180deg,
-            rgba(16,42,71,1) 0%,
-            rgba(16,42,71,.98) 43%,
-            rgba(16,42,71,.82) 56%,
-            rgba(16,42,71,.28) 72%,
-            rgba(16,42,71,0) 100%
-          ),
-          url("images/hero.webp");
-        background-repeat: no-repeat;
-        background-position: center top, center bottom;
-        background-size: 100% 100%, 100% auto;
-      }
-      .hero-grid { max-width: none; }
-      .hero-copy { color: rgba(255,255,255,.88); }
-      .hero-social { max-width: 310px; }
-      h1 { font-size: clamp(2.8rem,15vw,4.1rem); }
-      section { padding: 70px 0; }
-      .fleet-grid, .steps { grid-template-columns: 1fr; }
-      .price-panel { grid-template-columns: 1fr; }
-      .price + .price { border-left: 0; border-top: 1px solid var(--line); }
-      .footer-inner { display: block; }
-      .footer-links { margin-top: 8px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      * { transition: none !important; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Open Hangar Collective is a nonprofit flying club at IL48 St. Louis Metro-East Airport/Shafer Field in St. Jacob, Illinois.">
+<meta name="theme-color" content="#173b63">
+<title>Open Hangar Collective | Flying Club at IL48</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-
-  <header>
-    <div class="wrap nav">
-      <a class="brand" href="#top" aria-label="Open Hangar Collective home">
-        <img class="brand-logo" src="images/logo.webp" alt="Open Hangar Collective">
-      </a>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#fleet">Aircraft</a>
-        <a href="#membership">Membership</a>
-        <a href="#questions">Questions</a>
-        <a class="nav-facebook" href="https://www.facebook.com/profile.php?id=61575660054627" rel="noopener"><svg class="fb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.7 22v-9h3l.5-3.5h-3.5V7.3c0-1 .3-1.7 1.8-1.7h1.9V2.5c-.3 0-1.5-.1-2.8-.1-2.8 0-4.7 1.7-4.7 4.8v2.3H7v3.5h2.9v9h3.8Z"/></svg><span>Facebook</span></a>
-        <a class="nav-cta" href="#contact">Contact</a>
-      </nav>
+<a class="skip" href="#main">Skip to content</a>
+<nav class="side-nav" aria-label="Site navigation">
+  <a class="side-logo" href="index.html"><img src="images/logo.webp" alt="Open Hangar Collective"></a>
+  <div class="side-links">
+    <a href="index.html" class="current">Home</a>
+    <a href="aircraft.html">Aircraft</a>
+    <a href="membership.html">Membership</a>
+    <a href="contact.html">Contact &amp; Location</a>
+  </div>
+  <div class="side-social">
+    <a class="social-mini" href="https://www.facebook.com/profile.php?id=61575660054627" rel="noopener"><svg class="icon fb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.7 22v-9h3l.5-3.5h-3.5V7.3c0-1 .3-1.7 1.8-1.7h1.9V2.5c-.3 0-1.5-.1-2.8-.1-2.8 0-4.7 1.7-4.7 4.8v2.3H7v3.5h2.9v9h3.8Z"/></svg><span>Facebook</span></a>
+    <a class="social-mini" href="https://www.instagram.com/openhangarcollective/" rel="noopener"><svg class="icon ig-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.6" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a>
+  </div>
+</nav>
+<nav class="bottom-nav" aria-label="Mobile navigation">
+  <a href="index.html" class="current"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/></svg><span>Home</span></a>
+  <a href="aircraft.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 13 7-2 4-7 2 1-2 6 6 2v2l-6 1-2 5-2-1 1-4-8-1z"/></svg><span>Aircraft</span></a>
+  <a href="membership.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><path d="M5 20c.8-4 3.2-6 7-6s6.2 2 7 6"/></svg><span>Membership</span></a>
+  <a href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v14H4z"/><path d="m4 7 8 6 8-6"/></svg><span>Contact</span></a>
+</nav>
+<div class="page-shell">
+<main id="main">
+<section class="hero">
+  <div class="wrap hero-content">
+    <p class="kicker">Nonprofit flying club · IL48 Shafer Field</p>
+    <h1>More access. More flying. More community.</h1>
+    <p class="hero-copy">Open Hangar Collective is a nonprofit, non-equity flying club serving the St. Louis Metro East. Members have access to three club aircraft, local aviation connections, social events, and a practical home base for flying and training.</p>
+    <div class="actions"><a class="button" href="https://join.openhangar.club">Start an application</a><a class="button alt" href="aircraft.html">Meet the fleet</a></div>
+  </div>
+</section>
+<section class="white">
+  <div class="wrap grid-2">
+    <div><p class="label">Why join a flying club</p><h2>Aircraft access without owning alone.</h2></div>
+    <div class="body-copy">
+      <p class="large-copy">Membership offers a practical way to fly regularly, build experience, travel, or train without carrying the full cost and responsibility of individual aircraft ownership.</p>
+      <p>The club provides access to three aircraft, a scheduling platform, club-approved independent instructors, and a community of people who enjoy general aviation.</p>
+      <p>Current membership costs and aircraft rates are provided directly to prospective members. Email us or submit an application when you are ready to learn more.</p>
     </div>
-  </header>
-
-  <main id="main">
-    <section class="hero" id="top">
-      <div class="wrap hero-grid">
-        <p class="kicker">Member-operated flying club · IL48 Shafer Field</p>
-        <h1>More access. More flying. Shared ownership.</h1>
-        <p class="hero-copy">Open Hangar Collective is a nonprofit, non-equity flying club serving the St. Louis Metro East. Members share access to three club aircraft and a community built around safe, affordable general aviation.</p>
-        <div class="actions">
-          <a class="button" href="https://join.openhangar.club">Start an application</a>
-          <a class="button alt" href="#fleet">Meet the fleet</a>
-        </div>
-        <p class="hero-social">For current club activity and announcements, follow us on <a href="https://www.facebook.com/profile.php?id=61575660054627" rel="noopener"><svg class="fb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.7 22v-9h3l.5-3.5h-3.5V7.3c0-1 .3-1.7 1.8-1.7h1.9V2.5c-.3 0-1.5-.1-2.8-.1-2.8 0-4.7 1.7-4.7 4.8v2.3H7v3.5h2.9v9h3.8Z"/></svg><span>Facebook</span></a>.</p>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap intro-grid">
-        <div>
-          <div class="label">Why a flying club</div>
-          <h2>Fly like an owner without owning alone.</h2>
-        </div>
-        <div class="body-copy">
-          <p class="large-copy">Membership gives you owner-like access to the club’s aircraft, a voice in how the club operates, and rates built around sharing fixed costs.</p>
-          <p>Unlike a traditional rental operation, members support the aircraft together through monthly dues and pay dry hourly rates when they fly. The result is a practical way to stay active, build experience, travel, or train with a club-authorized instructor.</p>
-          <p>We keep aircraft access meaningful by managing the number of active pilots per airplane and operating under shared standards that protect the members, the aircraft, and the club.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="fleet" id="fleet">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <div class="label">Our aircraft</div>
-            <h2>Three airplanes. One membership.</h2>
-          </div>
-          <p>Rates are dry and based on Hobbs time. Members purchase fuel separately and operate under club checkout and scheduling requirements.</p>
-        </div>
-        <div class="fleet-grid">
-          <article class="aircraft">
-            <div class="aircraft-photo" data-tail="N3029X">
-              <img src="images/n3029x.webp" alt="Cessna 150F N3029X on the grass at Shafer Field">
-            </div>
-            <div class="aircraft-body">
-              <h3>Cessna 150F</h3>
-              <p class="aircraft-model">Two-seat trainer and economical local flyer</p>
-              <div class="rate"><strong>$70/hr</strong><span>Dry · Hobbs</span></div>
-            </div>
-          </article>
-
-          <article class="aircraft">
-            <div class="aircraft-photo" data-tail="N7892W">
-              <img src="images/n7892w.webp" alt="Piper Cherokee PA-28-160 N7892W at sunset">
-            </div>
-            <div class="aircraft-body">
-              <h3>Piper Cherokee PA-28-160</h3>
-              <p class="aircraft-model">Four-seat cross-country and training aircraft</p>
-              <div class="rate"><strong>$85/hr</strong><span>Dry · Hobbs</span></div>
-            </div>
-          </article>
-
-          <article class="aircraft">
-            <div class="aircraft-photo" data-tail="N5389W">
-              <img src="images/n5389w.webp" alt="Piper Cherokee PA-28-160 N5389W on the ramp">
-            </div>
-            <div class="aircraft-body">
-              <h3>Piper Cherokee PA-28-160</h3>
-              <p class="aircraft-model">Four-seat club aircraft for training and travel</p>
-              <div class="rate"><strong>$85/hr</strong><span>Dry · Hobbs</span></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="social">
-      <div class="wrap social-grid">
-        <div>
-          <div class="label">Around the hangar</div>
-          <h2>Projects, fellowship, and airplanes.</h2>
-          <p>Open Hangar Collective is member-operated, and there is usually more happening than just flying. Members pitch in on club projects, aircraft care, airport cleanup, and the occasional hangar gathering.</p>
-          <p>Because Facebook is updated more frequently than this website, it is the best place to see current club activity, recent photos, event updates, and announcements.</p>
-          <div class="actions">
-            <a class="button" href="https://www.facebook.com/profile.php?id=61575660054627" rel="noopener"><svg class="fb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.7 22v-9h3l.5-3.5h-3.5V7.3c0-1 .3-1.7 1.8-1.7h1.9V2.5c-.3 0-1.5-.1-2.8-.1-2.8 0-4.7 1.7-4.7 4.8v2.3H7v3.5h2.9v9h3.8Z"/></svg><span>See the latest on Facebook</span></a>
-          </div>
-        </div>
-        <div class="social-image">
-          <img src="images/community.webp" alt="Open Hangar Collective members working together around a club aircraft">
-        </div>
-      </div>
-    </section>
-
-    <section class="membership" id="membership">
-      <div class="wrap membership-grid">
-        <div>
-          <div class="label">Membership</div>
-          <h2>A straightforward path to the flight line.</h2>
-          <div class="price-panel">
-            <div class="price"><small>One-time joining fee</small><strong>$850</strong></div>
-            <div class="price"><small>Monthly dues</small><strong>$175</strong></div>
-          </div>
-        </div>
-        <div class="included">
-          <div class="included-item"><div class="check">✓</div><div><h3>Access to the full fleet</h3><p>Qualified members can schedule all three club aircraft through AirportSync.</p></div></div>
-          <div class="included-item"><div class="check">✓</div><div><h3>Shared fixed costs</h3><p>Dues support expenses such as hangar rent, insurance, annual inspections, subscriptions, scheduling, and administration.</p></div></div>
-          <div class="included-item"><div class="check">✓</div><div><h3>Choice of instruction</h3><p>The club does not sell instruction, but members may train with approved independent instructors and arrange instruction fees directly.</p></div></div>
-          <div class="included-item"><div class="check">✓</div><div><h3>Member voice and responsibility</h3><p>Members operate under the club’s standard operating procedures and help protect a shared aviation resource.</p></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="join-flow" id="join">
-      <div class="wrap">
-        <div class="section-head">
-          <div><div class="label">How to join</div><h2>From interest to aircraft access.</h2></div>
-          <p>After you apply, we send the detailed welcome materials and club documents directly to you. Those materials are not posted publicly.</p>
-        </div>
-        <div class="steps">
-          <article class="step"><span class="step-number">01</span><h3>Submit the membership application</h3><p>Tell us about yourself, your aviation experience, and the kind of flying you hope to do with the club.</p></article>
-          <article class="step"><span class="step-number">02</span><h3>Complete orientation</h3><p>Meet us at Shafer Field for an airport walkthrough, club orientation, and an introduction to how the hangars and aircraft are operated.</p></article>
-          <article class="step"><span class="step-number">03</span><h3>Review your welcome materials</h3><p>We privately provide the flight-prep information, aircraft references, operating guidelines, rate information, and club documents you need for onboarding.</p></article>
-          <article class="step"><span class="step-number">04</span><h3>Arrange your checkout</h3><p>Rated pilots complete a checkout with a club-approved independent CFI. Student pilots complete the requirements that apply to their training and medical status.</p></article>
-          <article class="step"><span class="step-number">05</span><h3>Complete the aircraft and hangar review</h3><p>Before the checkout flight, we review preflight procedures, hangar operations, and the club-specific items you need to know.</p></article>
-          <article class="step"><span class="step-number">06</span><h3>Receive scheduling access</h3><p>After the checkout requirements are complete and documented, we activate your AirportSync account so you can schedule eligible club aircraft.</p></article>
-        </div>
-        <div class="join-action">
-          <a class="button" href="https://join.openhangar.club">Begin the initial application</a>
-          <p>Questions before applying? Email <a href="mailto:info@openhangar.club">info@openhangar.club</a> or message us on Facebook.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="questions">
-      <div class="wrap faq-grid">
-        <div><div class="label">Common questions</div><h2>What to know before joining.</h2></div>
-        <div class="faq-list">
-          <details><summary>Is this a flight school?</summary><p>No. Open Hangar Collective provides aircraft access through membership. Members who need instruction can work with a club-authorized independent instructor and arrange payment directly with that instructor.</p></details>
-          <details><summary>What does “dry rate” mean?</summary><p>The hourly aircraft rate does not include fuel. Members are responsible for fuel under the club’s operating and reimbursement procedures.</p></details>
-          <details><summary>How are flights scheduled and billed?</summary><p>Members schedule aircraft through AirportSync. Each month, flight time is totaled by pilot and aircraft, and a statement is sent by email for payment.</p></details>
-          <details><summary>What rules apply to members?</summary><p>All members must follow the club’s standard operating procedures, including checkout, scheduling, flight limitations, member responsibilities, billing, and aircraft care requirements.</p></details>
-          <details><summary>Can non-pilots participate?</summary><p>People who enjoy general aviation but do not plan to fly may ask about Ground Crew membership and ways to support the club community.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact" id="contact">
-      <div class="wrap contact-grid">
-        <div>
-          <div class="label">Get in touch</div>
-          <h2>Email or Facebook are the best ways to reach us.</h2>
-        </div>
-        <div class="contact-card">
-          <small>Preferred contact</small>
-          <a href="mailto:info@openhangar.club">info@openhangar.club</a>
-          <p>For current updates or a quick message, reach us through the club Facebook page. We generally respond fastest through email or Facebook.</p>
-          <div class="contact-buttons">
-            <a href="mailto:info@openhangar.club">Email the club</a>
-            <a href="https://www.facebook.com/profile.php?id=61575660054627" rel="noopener"><svg class="fb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.7 22v-9h3l.5-3.5h-3.5V7.3c0-1 .3-1.7 1.8-1.7h1.9V2.5c-.3 0-1.5-.1-2.8-.1-2.8 0-4.7 1.7-4.7 4.8v2.3H7v3.5h2.9v9h3.8Z"/></svg><span>Message us on Facebook</span></a>
-          </div>
-          <p>Interested in joining? <a href="https://join.openhangar.club">Start the initial membership application.</a></p>
-          <p>Based at IL48 Shafer Field in St. Jacob, Illinois.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap footer-inner">
-      <div>© <span id="year"></span> Open Hangar Collective</div>
-      <div class="footer-links">
-        <a href="mailto:info@openhangar.club">Email</a>
-        <a href="https://www.facebook.com/profile.php?id=61575660054627" rel="noopener"><svg class="fb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.7 22v-9h3l.5-3.5h-3.5V7.3c0-1 .3-1.7 1.8-1.7h1.9V2.5c-.3 0-1.5-.1-2.8-.1-2.8 0-4.7 1.7-4.7 4.8v2.3H7v3.5h2.9v9h3.8Z"/></svg><span>Facebook</span></a>
+  </div>
+</section>
+<section class="navy">
+  <div class="wrap grid-2">
+    <div>
+      <p class="label">Around the hangar</p><h2>Flying is only part of it.</h2>
+      <p>Club life also includes social events, airport projects, aircraft care, safety discussions, and time around the hangar. Facebook and Instagram are the best places for current photos, announcements, and activity.</p>
+      <div class="actions">
+        <a class="button" href="https://www.facebook.com/profile.php?id=61575660054627" rel="noopener"><svg class="icon fb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.7 22v-9h3l.5-3.5h-3.5V7.3c0-1 .3-1.7 1.8-1.7h1.9V2.5c-.3 0-1.5-.1-2.8-.1-2.8 0-4.7 1.7-4.7 4.8v2.3H7v3.5h2.9v9h3.8Z"/></svg><span>Facebook</span></a>
+        <a class="button alt" href="https://www.instagram.com/openhangarcollective/" rel="noopener"><svg class="icon ig-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.6" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a>
       </div>
     </div>
-  </footer>
-
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <div><img src="images/community.webp" alt="Open Hangar Collective members around a club aircraft" style="width:100%;aspect-ratio:4/3;object-fit:cover;box-shadow:var(--shadow)"></div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap footer-inner"><div>© <span id="year"></span> Open Hangar Collective</div><div><a href="mailto:info@openhangar.club">info@openhangar.club</a></div></div></footer>
+<script>document.getElementById("year").textContent=new Date().getFullYear();</script>
+</div>
 </body>
 </html>
