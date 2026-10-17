@@ -148,3 +148,73 @@ footer{padding:28px 0;background:#0b2037;color:rgba(255,255,255,.62);font-size:.
   .aircraft-media{padding:14px}
   .thumb-grid.two-up{grid-template-columns:1fr}
 }
+
+
+/* Ground Crew membership */
+.membership-types{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:22px;
+  margin-top:34px;
+}
+.membership-type{
+  padding:28px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--soft-blue);
+}
+.membership-type h3{
+  margin:4px 0 12px;
+  color:var(--navy);
+  font-size:1.35rem;
+}
+.membership-type p{
+  margin:0 0 14px;
+  color:var(--muted);
+}
+.membership-type-kicker{
+  color:var(--red) !important;
+  font-size:.75rem;
+  font-weight:900;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.ground-crew-card{
+  background:var(--navy-dark);
+  color:white;
+  border-color:transparent;
+}
+.ground-crew-card h3{color:white}
+.ground-crew-card p{color:rgba(255,255,255,.78)}
+.ground-crew-list{
+  margin:18px 0 20px;
+  padding:0;
+  list-style:none;
+  display:grid;
+  gap:10px;
+}
+.ground-crew-list li{
+  position:relative;
+  padding-left:22px;
+  color:rgba(255,255,255,.84);
+}
+.ground-crew-list li::before{
+  content:"✓";
+  position:absolute;
+  left:0;
+  color:#ff858a;
+  font-weight:900;
+}
+.ground-crew-note{
+  padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.16);
+  font-size:.92rem;
+}
+.ground-crew-button{margin-top:4px}
+.text-link{
+  color:var(--navy);
+  font-weight:800;
+}
+@media(max-width:900px){
+  .membership-types{grid-template-columns:1fr}
+}
