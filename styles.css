@@ -218,3 +218,26 @@ footer{padding:28px 0;background:#0b2037;color:rgba(255,255,255,.62);font-size:.
 @media(max-width:900px){
   .membership-types{grid-template-columns:1fr}
 }
+
+
+/* Membership hierarchy refinement */
+.flying-member-card{
+  background:var(--navy-dark);
+  color:white;
+  border-color:transparent;
+}
+.flying-member-card h3{color:white}
+.flying-member-card p{color:rgba(255,255,255,.82)}
+.flying-member-card .membership-type-kicker{color:#ff858a !important}
+.flying-member-card .text-link{color:white}
+.ground-crew-card{
+  background:var(--soft-blue);
+  color:var(--ink);
+  border-color:var(--line);
+}
+.ground-crew-card h3{color:var(--navy)}
+.ground-crew-card p{color:var(--muted)}
+.ground-crew-card .membership-type-kicker{color:var(--red) !important}
+.ground-crew-card .ground-crew-list li{color:var(--muted)}
+.ground-crew-card .ground-crew-list li::before{color:var(--red)}
+.ground-crew-card .ground-crew-note{border-top:1px solid var(--line)}
