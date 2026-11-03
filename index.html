@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div id="fb-root"></div>
 <a class="skip" href="#main">Skip to content</a>
 <nav class="side-nav" aria-label="Site navigation">
   <a class="side-logo" href="index.html"><img src="images/logo.webp" alt="Open Hangar Collective"></a>
@@ -70,29 +71,32 @@
       <h2>See what's happening around our hangar.</h2>
       <p>We update Facebook and Instagram more often than our website, so they're the best places to see current photos, announcements, events, and what's happening around our club.</p>
       <div class="actions">
-        <a class="button" href="https://www.facebook.com/profile.php?id=61575660054627" rel="noopener"><svg class="icon fb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.7 22v-9h3l.5-3.5h-3.5V7.3c0-1 .3-1.7 1.8-1.7h1.9V2.5c-.3 0-1.5-.1-2.8-.1-2.8 0-4.7 1.7-4.7 4.8v2.3H7v3.5h2.9v9h3.8Z"/></svg><span>Open Facebook</span></a>
-        <a class="button alt-social" href="https://www.instagram.com/openhangarcollective/" rel="noopener"><svg class="icon ig-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.6" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a>
+        <a class="button" href="https://www.facebook.com/profile.php?id=61575660054627" target="_blank" rel="noopener"><svg class="icon fb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.7 22v-9h3l.5-3.5h-3.5V7.3c0-1 .3-1.7 1.8-1.7h1.9V2.5c-.3 0-1.5-.1-2.8-.1-2.8 0-4.7 1.7-4.7 4.8v2.3H7v3.5h2.9v9h3.8Z"/></svg><span>Open Facebook</span></a>
+        <a class="button alt-social" href="https://www.instagram.com/openhangarcollective/" target="_blank" rel="noopener"><svg class="icon ig-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.6" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a>
       </div>
     </div>
-    <div class="facebook-frame">
-      <iframe
-        title="Open Hangar Collective Facebook timeline"
-        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61575660054627&tabs=timeline&width=500&height=620&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false"
-        width="500"
-        height="620"
-        style="border:none;overflow:hidden"
-        scrolling="no"
-        frameborder="0"
-        allowfullscreen="true"
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-        loading="lazy">
-      </iframe>
-      <p class="facebook-fallback">If Facebook doesn't load here, <a href="https://www.facebook.com/profile.php?id=61575660054627" rel="noopener">open our Facebook page</a>.</p>
+
+    <div class="facebook-feed-shell">
+      <div class="fb-page"
+           data-href="https://www.facebook.com/profile.php?id=61575660054627"
+           data-tabs="timeline"
+           data-width="500"
+           data-height="620"
+           data-small-header="false"
+           data-adapt-container-width="true"
+           data-hide-cover="false"
+           data-show-facepile="false">
+        <blockquote cite="https://www.facebook.com/profile.php?id=61575660054627" class="fb-xfbml-parse-ignore">
+          <a href="https://www.facebook.com/profile.php?id=61575660054627">Open Hangar Collective</a>
+        </blockquote>
+      </div>
+      <noscript><p class="facebook-fallback">Facebook needs JavaScript to show our latest posts. <a href="https://www.facebook.com/profile.php?id=61575660054627">Open our Facebook page</a>.</p></noscript>
     </div>
   </div>
 </section>
 </main>
 <footer><div class="wrap footer-inner"><div>© <span id="year"></span> Open Hangar Collective</div><div><a href="mailto:info@openhangar.club">info@openhangar.club</a></div></div></footer>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1"></script>
 <script>document.getElementById("year").textContent=new Date().getFullYear();</script>
 </div>
 </body>
