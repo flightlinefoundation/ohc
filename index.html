@@ -76,7 +76,7 @@
       </div>
     </div>
 
-    <div class="facebook-feed-shell">
+    <div class="facebook-feed-shell" id="facebook-feed-shell">
       <div class="fb-page"
            data-href="https://www.facebook.com/profile.php?id=61575660054627"
            data-tabs="timeline"
@@ -90,14 +90,52 @@
           <a href="https://www.facebook.com/profile.php?id=61575660054627">Open Hangar Collective</a>
         </blockquote>
       </div>
-      <noscript><p class="facebook-fallback">Facebook needs JavaScript to show our latest posts. <a href="https://www.facebook.com/profile.php?id=61575660054627">Open our Facebook page</a>.</p></noscript>
+      <div class="facebook-feed-fallback" id="facebook-feed-fallback">
+        <img src="images/logo.webp" alt="Open Hangar Collective">
+        <p class="label">Latest from Facebook</p>
+        <h3>Follow what we're doing around our hangar.</h3>
+        <p>Facebook sometimes blocks its embedded timeline depending on browser privacy settings or whether you're signed in. Our page is still the best place to see our newest photos, events, workdays, and flying.</p>
+        <a class="button" href="https://www.facebook.com/profile.php?id=61575660054627" target="_blank" rel="noopener">Open our Facebook page</a>
+      </div>
+      <noscript><div class="facebook-feed-fallback noscript-fallback"><img src="images/logo.webp" alt="Open Hangar Collective"><p class="label">Latest from Facebook</p><h3>Follow what we're doing around our hangar.</h3><a class="button" href="https://www.facebook.com/profile.php?id=61575660054627">Open our Facebook page</a></div></noscript>
     </div>
   </div>
 </section>
 </main>
 <footer><div class="wrap footer-inner"><div>© <span id="year"></span> Open Hangar Collective</div><div><a href="mailto:info@openhangar.club">info@openhangar.club</a></div></div></footer>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1"></script>
-<script>document.getElementById("year").textContent=new Date().getFullYear();</script>
+<script>
+window.fbAsyncInit = function(){
+  try { FB.XFBML.parse(document.getElementById('facebook-feed-shell')); } catch(e) {}
+};
+(function(d,s,id){
+  var js, fjs=d.getElementsByTagName(s)[0];
+  if(d.getElementById(id)) return;
+  js=d.createElement(s); js.id=id; js.async=true; js.defer=true; js.crossOrigin='anonymous';
+  js.src='https://connect.facebook.net/en_US/sdk.js#xfbml=1';
+  fjs.parentNode.insertBefore(js,fjs);
+}(document,'script','facebook-jssdk'));
+
+(function(){
+  var fallback=document.getElementById('facebook-feed-fallback');
+  var shell=document.getElementById('facebook-feed-shell');
+  function check(){
+    var iframe=shell && shell.querySelector('.fb-page iframe');
+    if(iframe && iframe.offsetHeight>100){
+      fallback.hidden=true;
+      shell.classList.add('facebook-loaded');
+      return true;
+    }
+    return false;
+  }
+  var tries=0;
+  var timer=setInterval(function(){
+    tries++;
+    if(check() || tries>=20) clearInterval(timer);
+  },500);
+})();
+
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
 </div>
 </body>
 </html>
